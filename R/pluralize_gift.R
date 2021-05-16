@@ -12,16 +12,6 @@
 #'
 #' @export
 
-#pluralize_gift <- function(gift){
-
-#gift <- gift %>%
-  str_replace()
-
-#return(gift)
-
-#}
-
-#step 1
 
   pluralize_gift <- function(gift){
     gift = case_when(

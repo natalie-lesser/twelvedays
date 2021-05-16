@@ -17,7 +17,7 @@
 #' @export
 
 
-make_phrase <- function(num, gift, verb = "", adjective = "", location = ""){
+make_phrase <- function(num, gift, verb, adjective, location){
 
   verb <- replace_na(verb, "")
   gift <- replace_na(gift, "")
@@ -32,5 +32,6 @@ make_phrase <- function(num, gift, verb = "", adjective = "", location = ""){
     num == 1 ~ "a",
     TRUE ~ as.character(english(num))
   )
-  glue("{num_word} {adjective} {gift} {verb} {location}")
+  glue("{num_word} {adjective} {gift} {verb} {location}")%>%
+    str_squish()
 }

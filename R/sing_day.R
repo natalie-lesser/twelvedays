@@ -13,11 +13,15 @@
 #' @import purrr
 #'
 #' @export
-sing_day <- function(dataset, line, phrase_col){
 
-  phrases <- dataset %>% pull({{phrase_col}})
+sing_day <- function(dataset, line, phrase_col ){
 
-  #????
+  phrases <- dataset%>%
+    pull({{phrase_col}})
 
+  phrases[1] <- paste0("and ", phrases[1], ".")
+  phrase1 <- str_c(phrases[line:1], collapse = ", \n")
+
+  glue("On the {ordinal(line)} day of Christams, my true love gave to me: \n {phrase1}")
 
 }
