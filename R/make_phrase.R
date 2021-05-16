@@ -17,13 +17,20 @@
 #' @export
 
 
+make_phrase <- function(num, gift, verb = "", adjective = "", location = ""){
 
-make_phrase <- function(num, num_word, item, verb, adjective, location){
+  verb <- replace_na(verb, "")
+  gift <- replace_na(gift, "")
+  adjective <- replace_na(adjective, "")
+  location <- replace_na(location, "")
 
-  verb <- str_replace_na(verb, "")
-
-  #????
-
-
+  gift = case_when(
+    num > 1 ~ pluralize_gift(gift),
+    TRUE ~ gift
+  )
+  num_word = case_when(
+    num == 1 ~ "a",
+    TRUE ~ as.character(english(num))
+  )
+  glue("{num_word} {adjective} {gift} {verb} {location}")
 }
-
