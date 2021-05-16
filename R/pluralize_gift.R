@@ -8,13 +8,28 @@
 #' @import dplyr
 #' @import glue
 #' @import purrr
+#' @import english
 #'
 #' @export
-pluralize_gift <- function(gift){
 
-gift <- gift %>%
+#pluralize_gift <- function(gift){
+
+#gift <- gift %>%
   str_replace()
 
-return(gift)
+#return(gift)
 
-}
+#}
+
+#step 1
+
+  pluralize_gift <- function(gift){
+    gift = case_when(
+      str_detect(gift, "oo") ~ str_replace(gift, "oo", "ee"),
+      str_detect(gift, "y") ~ str_replace(gift, "y", "ies"),
+      TRUE ~ paste0(gift, "s")
+    )
+  }
+
+
+
